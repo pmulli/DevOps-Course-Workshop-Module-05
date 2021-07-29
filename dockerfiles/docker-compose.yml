@@ -2,15 +2,16 @@ version: "3"
 
 services:
   cliapp:
-    image: pmullineux/chimera-cliapp
-    volumes:
-      - DATA_FOLDER:/opt/chimera/data
+    build: 
+        context: .
+        dockerfile: Dockerfile.cliapp
+
   webapp:
-    image: pmullineux/chimera-webapp
-    volumes:
-      - DATA_FOLDER:/opt/chimera/data
+    build: 
+        context: .
+        dockerfile: Dockerfile.webapp
+
     ports:
       - "8080:80"
-
-volumes:
-    DATA_FOLDER: 
+  redis:
+    image: "redis"

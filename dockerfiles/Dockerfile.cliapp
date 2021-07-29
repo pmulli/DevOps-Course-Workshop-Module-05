@@ -7,8 +7,9 @@ RUN curl https://devops-command-line-workshop.s3.eu-west-2.amazonaws.com/cliapp 
 RUN chmod +x cliapp
 COPY ./run.sh ./run.sh
 RUN chmod +x ./run.sh
-# The data folder should be shared with the webapp
-ENV DATA_FOLDER=/opt/chimera/data
+# Redis integration
+ENV REDIS_HOST=redis
+ENV REDIS_PORT=6379
 RUN mkdir /var/log/chimera
 
 ENTRYPOINT ["./run.sh"]
